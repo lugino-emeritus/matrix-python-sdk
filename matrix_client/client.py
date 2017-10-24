@@ -19,7 +19,6 @@ from .user import User
 from threading import Thread
 from time import time, sleep
 from uuid import uuid4
-import requests
 import logging
 import sys
 
@@ -357,6 +356,7 @@ class MatrixClient(object):
                   last_connection_time: time of the last successful connection
                could return whether the the thread should sleep for a while
         """
+
         bad_sync_timeout = 5        
         last_connection_time = time()
         sleep_bad_sync = False
