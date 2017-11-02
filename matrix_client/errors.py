@@ -12,7 +12,7 @@ class MatrixUnexpectedResponse(MatrixError):
 
 
 class MatrixRequestError(MatrixError):
-    """ The home server returned an error response. """
+    """The home server returned an error response."""
 
     def __init__(self, code=0, content=""):
         super(MatrixRequestError, self).__init__("%d: %s" % (code, content))
@@ -28,6 +28,7 @@ class MatrixHttpLibError(MatrixError):
             "Something went wrong in {} requesting {}: {}".format(original_exception)
         )
         self.original_exception = original_exception
+        
         
 class MatrixTimeoutError(MatrixError):
     """A timeout occured while waiting for a response."""
