@@ -600,7 +600,7 @@ class MatrixHttpApi(object):
                     verify=self.validate_cert,
                     timeout=request_timeout
                 )
-                
+
             except requests.exceptions.Timeout as e:
                 raise MatrixTimeoutError(e, method, endpoint)
                 

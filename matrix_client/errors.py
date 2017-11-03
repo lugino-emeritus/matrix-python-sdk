@@ -28,8 +28,8 @@ class MatrixHttpLibError(MatrixError):
             "Something went wrong in {} requesting {}: {}".format(method, endpoint, original_exception)
         )
         self.original_exception = original_exception
-        
-        
+
+
 class MatrixTimeoutError(MatrixHttpLibError):
     """Client-side timeout in a request."""
     
