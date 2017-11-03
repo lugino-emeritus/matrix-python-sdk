@@ -601,15 +601,11 @@ class MatrixHttpApi(object):
                     timeout=request_timeout
                 )
                 
+            except requests.exceptions.Timeout as e:
+                raise MatrixTimeoutError(e, method, endpoint)
+                
             except requests.exceptions.RequestException as e:
                 raise MatrixHttpLibError(e, method, endpoint)
-                
-            except requests.exceptions.Timeout as e:
-                raise MatrixTimeoutError(
-                    original_exception=e,
-                    content="A timeout occured while _send",
-                    endpoint=endpoint
-                )
 
             if response.status_code == 429:
                 sleep(response.json()['retry_after_ms'] / 1000)
